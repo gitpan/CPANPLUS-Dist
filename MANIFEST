@@ -1,0 +1,11 @@
+lib/CPANPLUS/Dist.pm
+lib/CPANPLUS/Dist/PAR.pm
+lib/CPANPLUS/Dist/Ports.pm
+lib/CPANPLUS/Dist/PPM.pm
+lib/CPANPLUS/Dist/RPM.pm
+Makefile.PL
+MANIFEST
+META.yml
+README
+SIGNATURE
+t/0-signature.t
