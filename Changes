@@ -1,0 +1,27 @@
+____________________________________________________________________________
+[  7761] By: autrijus                              on 2003/08/28  14:44:41
+        Log: * This be 0.00_02.
+	   ! Makefile.PL lib/CPANPLUS/Dist.pm
+____________________________________________________________________________
+[  7760] By: autrijus                              on 2003/08/28  14:43:03
+        Log: * thanks to demon@freebsd.org, the generated ports
+             now passes portlint.
+	   ! lib/CPANPLUS/Dist/Ports.pm
+____________________________________________________________________________
+[  7721] By: autrijus                              on 2003/08/26  10:53:44
+        Log: * This be 0.00_01
+	   ! Makefile.PL README lib/CPANPLUS/Dist.pm
+	   ! lib/CPANPLUS/Dist/RPM.pm
+____________________________________________________________________________
+[  7709] By: autrijus                              on 2003/08/25  19:32:50
+        Log: * some infrastructure.
+	   + MANIFEST README t/0-signature.t
+	   ! lib/CPANPLUS/Dist.pm
+____________________________________________________________________________
+[  7708] By: autrijus                              on 2003/08/25  19:29:17
+        Log: * branch off for a initial preview of CPANPLUS::Dist.
+	   + Makefile.PL
+	  +> lib/CPANPLUS/Dist.pm lib/CPANPLUS/Dist/PAR.pm
+	  +> lib/CPANPLUS/Dist/PPM.pm
+	  +> lib/CPANPLUS/Dist/Ports.pm
+	  +> lib/CPANPLUS/Dist/RPM.pm

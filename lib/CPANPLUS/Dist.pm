@@ -1,5 +1,5 @@
 # $File: //member/autrijus/CPANPLUS-Dist/lib/CPANPLUS/Dist.pm $ $Author: autrijus $
-# $Revision: #3 $ $Change: 7721 $ $DateTime: 2003/08/26 10:53:44 $
+# $Revision: #4 $ $Change: 7761 $ $DateTime: 2003/08/28 14:44:41 $
 
 package CPANPLUS::Dist;
 
@@ -11,7 +11,7 @@ use CPANPLUS::Tools::Check qw[check];
 BEGIN {
     use vars        qw( @ISA $VERSION );
     @ISA        =   qw( CPANPLUS::Internals );
-    $VERSION    =   '0.00_01';
+    $VERSION    =   '0.00_02';
 }
 
 my $Class = 'CPANPLUS::Backend';

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.34.
+signed via the Module::Signature module, version 0.35.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,20 +14,21 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 3efa8fb593d48753a9649d603f20e240461dd31f MANIFEST
-SHA1 907ee5085e541aff715d8255fffb2740e85611a8 META.yml
-SHA1 d71e13244c919f8e27df714272f225939e4bda48 Makefile.PL
+SHA1 eda8521d00c3347f66411059b4a24fdc9d71a109 Changes
+SHA1 3838243c3dc1a9c8b62e738f9f205b1326dda77d MANIFEST
+SHA1 e46db4d4c73a1b96127ff1af24db64028d792232 META.yml
+SHA1 225cb1c663194d7f3ee40f72d292f19e1f880739 Makefile.PL
 SHA1 f23fdb127299d5965ee99ddbccd172a24c60713e README
-SHA1 50aa25330f67f8cc05fbdc5bc2f809cd19ccec92 lib/CPANPLUS/Dist.pm
+SHA1 f5561f1270bc8e284fe262a2525a5f5168bc1b43 lib/CPANPLUS/Dist.pm
 SHA1 9447fd2a53a6df4947a3be134a1567542a7fd2e0 lib/CPANPLUS/Dist/PAR.pm
 SHA1 d69afa5e2bec4b12443b3627d79b5f8e1ba872be lib/CPANPLUS/Dist/PPM.pm
-SHA1 a70e32b0866113c88e796ded1a74ad2d9231109b lib/CPANPLUS/Dist/Ports.pm
+SHA1 5a088c97bb65af16d68b1cbefc056495a37a7469 lib/CPANPLUS/Dist/Ports.pm
 SHA1 05b5b51e9f814551978b32f0ce99e3f472d60f99 lib/CPANPLUS/Dist/RPM.pm
 SHA1 17dd8b35d4fa1c9094c3d997eb69260fb80b6d4f t/0-signature.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (FreeBSD)
+Version: GnuPG v1.2.3 (FreeBSD)
 
-iD8DBQE/SzzTtLPdNzw1AaARAugSAKC+fTtWLRMp7VDA/pf2pymFkfTLGgCfW9td
-qTx/ajH/ZA5aGkMm3MYpjWk=
-=AW9a
+iD8DBQE/ThjWtLPdNzw1AaARAlF+AJ4qe2fiyxOlTfV4XAuVPW/486Z3sACaAvPB
+C/Rr8ibmufcfErlHqX/UUBo=
+=hcux
 -----END PGP SIGNATURE-----

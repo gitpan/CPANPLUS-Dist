@@ -139,7 +139,7 @@ sub create {
         perl        => { default => ($conf->_get_build('perl') || $^X) },
         builddir    => { default => $self->status->make_dir },
         portsdir    => { default => '/usr/ports' },
-        category    => { default => 'perl5' },
+        category    => { default => 'devel' },
         prefix      => { default => 'p5-' },
         distdir     => { default => '', },
     };
@@ -211,7 +211,7 @@ sub create {
         $err->trap( error => loc("Could not open %1 for writing: %2", $makefile, $!) );
     } else {
         my $date = join(' ', (split(/ /, scalar gmtime))[1, 2, -1]);
-        my $subdir = "../../" . $self->path;
+        my $subdir = "../../authors/id/" . $self->path;
         my $blib = File::Spec->catdir($args->{builddir}, 'blib');
         my @man1 = map File::Basename::basename($_), <$blib/man1/*.1>;
         my @man3 = map File::Basename::basename($_), <$blib/man3/*.3>;
@@ -256,6 +256,7 @@ sub create {
         }
 
         my $build_depends = join(" \\\n\t\t", @depends);
+        my $description = $self->{description} || $name;
 
         $fh->print(<< "EOF");
 # New ports collection makefile for:	$category/$prefix$name
@@ -264,17 +265,16 @@ sub create {
 #
 # \$FreeBSD \$
 #
-# Generated automatically by CPANPLUS, version $CPANPLUS::VERSION
-# 
 
 PORTNAME=	$name
 PORTVERSION=	$ver
-CATEGORIES=	$category
+CATEGORIES=	$category perl5
 MASTER_SITES=	\${MASTER_SITE_PERL_CPAN}
-MASTER_SITE_SUBDIR=     $subdir
+MASTER_SITE_SUBDIR=	$subdir
 PKGNAMEPREFIX=	$prefix
 
 MAINTAINER=	cpanplus\@example.com
+COMMENT=	$description
 
 BUILD_DEPENDS=	$build_depends
 RUN_DEPENDS=	\${BUILD_DEPENDS}
@@ -285,7 +285,7 @@ EOF
 
         $fh->print("MAN1=		@man1\n") if @man1;
         $fh->print("MAN3=		@man3\n") if @man3;
-        $fh->print("MANPREFIX=	\${PREFIX}/lib/perl5/\${PERL_VERSION}\n") if @man1 or @man3;
+        $fh->print("\n");
         $fh->print(".include <bsd.port.mk>\n");
     }
 
@@ -316,13 +316,7 @@ EOF
         my $md5 = Digest::MD5->new;
         $md5->addfile($_fh);
         print $fh "MD5 (", $self->package, ") = ";
-        print $fh $md5->hexdigest;
-    }
-
-    unless( open $fh, ">$pkg_comment" ) {
-        $err->trap( error => loc("Could not open %1 for writing: %2", $pkg_comment, $!) );
-    } else {
-        print $fh $self->{description} || $name;
+        print $fh $md5->hexdigest, "\n";
     }
 
     unless( open $fh, ">$pkg_descr" ) {
