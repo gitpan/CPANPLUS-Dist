@@ -158,6 +158,8 @@ sub create {
     my $category    = $args->{category};
     my $prefix      = $args->{prefix};
     my $portsdir    = $args->{portsdir};
+    my $username    = $ENV{NAME} || 'CPANPLUS User';
+    my $email       = $ENV{EMAIL} || '<cpanplus@example.com>';
 
     my $perl_version = $obj->_perl_version( perl => $perl );
 
@@ -223,7 +225,7 @@ sub create {
         # analyze prereq
         foreach my $mod (sort keys %$prereq) {
             next unless my $obj = $modtree->{$mod};
-            my $modname = $obj->package;
+            my $modname = eval { $obj->package } or next;
             $modname =~ s/-[\d._]+(?:\.tar\.gz|\.zip|\.tgz)$//i or next;
 
             my $ports_dir = (glob("$portsdir/*/$prefix$modname"))[0];
@@ -258,12 +260,17 @@ sub create {
         my $build_depends = join(" \\\n\t\t", @depends);
         my $description = $self->{description} || $name;
 
+        $build_depends &&= << ".";
+BUILD_DEPENDS=	$build_depends
+RUN_DEPENDS=	\${BUILD_DEPENDS}
+
+.
         $fh->print(<< "EOF");
 # New ports collection makefile for:	$category/$prefix$name
 # Date created:				$date
-# Whom:					CPANPLUS User <cpanplus\@example.com>
+# Whom:					$username $email
 #
-# \$FreeBSD \$
+# \$FreeBSD\$
 #
 
 PORTNAME=	$name
@@ -273,11 +280,8 @@ MASTER_SITES=	\${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR=	$subdir
 PKGNAMEPREFIX=	$prefix
 
-MAINTAINER=	cpanplus\@example.com
+MAINTAINER=	$email
 COMMENT=	$description
-
-BUILD_DEPENDS=	$build_depends
-RUN_DEPENDS=	\${BUILD_DEPENDS}
 
 PERL_CONFIGURE=	yes
 
@@ -317,6 +321,8 @@ EOF
         $md5->addfile($_fh);
         print $fh "MD5 (", $self->package, ") = ";
         print $fh $md5->hexdigest, "\n";
+        print $fh "SIZE (", $self->package, ") = ";
+        print $fh -s $_fh, "\n";
     }
 
     unless( open $fh, ">$pkg_descr" ) {

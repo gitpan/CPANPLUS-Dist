@@ -1,10 +1,11 @@
+# http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         CPANPLUS-Dist
-version:      0.00_02
+version:      0.00_03
 version_from: lib/CPANPLUS/Dist.pm
 installdirs:  site
 requires:
     CPANPLUS:                      0.043
 
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.10_04
+generated_by: ExtUtils::MakeMaker version 6.21
